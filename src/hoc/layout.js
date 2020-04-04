@@ -2,11 +2,12 @@ import React from 'react'
 import Header from '../components/header/header'
 
 const Layout = (props) => (
-  <Header>
+  <div>
+    <Header />
     <div>
       {props.children}
     </div>
-  </Header>
+  </div>
 )
 
 export default Layout
