@@ -12,7 +12,7 @@ import Routes from './routes'
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore)
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware}>
+  <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
       <Routes />
     </BrowserRouter>

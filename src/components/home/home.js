@@ -1,8 +1,10 @@
 import React from 'react'
 
+import HomeContainer from './../../containers/homecontainer'
+
 const Home = () => (
   <div>
-    Home
+    <HomeContainer />
   </div>
 )
 
