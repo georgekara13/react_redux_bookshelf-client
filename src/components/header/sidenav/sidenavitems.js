@@ -65,9 +65,8 @@ const SideNavItems = () => {
     </div>
   )
 
-  //FIXME items wont show in sidenav
   const showItems = () => {
-    items.map((item, i) => {
+    return items.map((item, i) => {
       return element(item, i)
     })
   }
