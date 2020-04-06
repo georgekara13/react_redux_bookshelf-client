@@ -7,17 +7,17 @@ import BookItem from '../widgetsUI/bookitem'
 class HomeContainer extends Component {
 
   componentDidMount(){
-    this.props.dispatch(getBooks(1,0))
+    this.props.dispatch(getBooks(3,0))
   }
 
-  renderItems(books){
-    return books.list ? books.list.map( (item, i) => ( <BookItem {...item} key ={i}/>))
+  renderItems = (books) => {
+    return books.list ? books.list.map( item => ( <BookItem {...item} key={item._id}/>))
                       : null
   }
 
-  loadMore(){
+  loadMore = () => {
     let count = this.props.books.list.length
-    this.props.dispatch(getBooks(1, count, 'asc', this.props.books.list))
+    this.props.dispatch(getBooks(3, count, 'asc', this.props.books.list))
   }
 
   render() {
