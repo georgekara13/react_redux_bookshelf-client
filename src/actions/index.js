@@ -40,3 +40,16 @@ export function getBookWithReviewer(id){
     })
   }
 }
+
+/*extra action for clearing the book state if component unmounts - this ensures that
+we won't display the previous book info on the next component mounting,
+on slow internet connections - we prefer to show empty views, rather that incorrect data*/
+export function clearBookWithReviewer(){
+  return {
+    type: 'CLEAR_BOOK_W_REVIEWER',
+    payload: {
+      book: {},
+      reviewer: {}
+    }
+  }
+}
