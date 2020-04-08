@@ -99,7 +99,7 @@ header .navItem span {
     font-size:13px;
 }
 
-.book_item .book_items strong { 
+.book_item .book_items strong {
     color: #ffffff;
 }
 .book_item .book_items div {
@@ -189,6 +189,7 @@ header .navItem span {
 
 .rl_container .error {
     color: #FF5722;
+    font-size: 20px;
     margin-top: 10px;
     font-weight: 600;
 }
@@ -232,6 +233,7 @@ header .navItem span {
 /*=============================
             USER
 ===============================*/
+
     .user_posts {
         padding:10px;
         box-sizing: border-box;
@@ -275,7 +277,7 @@ header .navItem span {
     margin-bottom: 10px;
     color: #a4a4a4;
   }
-  .user_container .nfo div span { 
+  .user_container .nfo div span {
     font-weight: 500;
     color: #02bcd4;
   }
@@ -339,7 +341,7 @@ header .navItem span {
     padding: 7px;
     box-sizing: border-box;
 }
-.br_container .br_box .left div span { 
+.br_container .br_box .left div span {
     font-weight: 700
 }
 
