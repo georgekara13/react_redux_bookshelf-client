@@ -6,6 +6,10 @@ export default function(state={}, action){
       return {...state, book:action.payload.book, reviewer:action.payload.reviewer}
     case 'CLEAR_BOOK_W_REVIEWER':  //the payload in fact is empty here - this is what we want to do
       return {...state, book:action.payload.book, reviewer:action.payload.reviewer}
+    case 'ADD_BOOK':
+      return {...state, newbook:action.payload}
+    case 'CLEAR_BOOK_FORM':
+      return {...state, newbook:action.payload}
     default:
       return state
   }

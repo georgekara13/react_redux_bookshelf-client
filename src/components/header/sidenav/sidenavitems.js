@@ -42,8 +42,8 @@ const SideNavItems = () => {
       },
       {
         type: 'navItem',
-        icon: 'file-text-o',
-        text: 'Add Reviews',
+        icon: 'book',
+        text: 'Add Book Review',
         link: '/user/add',
         restricted: false
       },

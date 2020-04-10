@@ -135,6 +135,12 @@ header .navItem span {
     color: #02bcd4;
 }
 
+.rl_container h3 {
+    font-size: 22px;
+    font-weight: 300;
+    color: #02bcd4;
+}
+
 .rl_container input {
     font-size: 20px;
     border-radius: 3px;
