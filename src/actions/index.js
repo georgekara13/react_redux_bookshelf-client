@@ -95,3 +95,13 @@ export function auth(){
     payload: request
   }
 }
+
+export function getUserPosts(ownerId){
+  const request = axios.get(`/api/userposts?user=${ownerId}`)
+                       .then(response => response.data)
+
+  return {
+    type: 'GET_USER_POSTS',
+    payload: request
+  }
+}

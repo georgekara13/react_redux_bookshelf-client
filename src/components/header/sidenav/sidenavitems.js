@@ -37,7 +37,7 @@ const SideNavItems = () => {
         type: 'navItem',
         icon: 'file-text-o',
         text: 'My Reviews',
-        link: '/user/user-reviews',
+        link: '/user/user-posts',
         restricted: false
       },
       {

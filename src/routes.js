@@ -8,6 +8,7 @@ import Login from './containers/admin/login'
 import User from './components/admin'
 import Auth from './hoc/auth'
 import AddBook from './containers/admin/add'
+import UserPosts from './components/admin/userposts'
 
 /*
 Use Auth() function to restrict routes whenever required
@@ -21,6 +22,7 @@ const Routes = () => (
       <Route path="/user" exact component={Auth(User, true)}/>
       <Route path="/books/:id" exact component={BookView}/>
       <Route path="/user/add" exact component={Auth(AddBook, true)}/>
+      <Route path="/user/user-posts" exact component={Auth(UserPosts, true)}/>
     </Switch>
   </Layout>
 )
