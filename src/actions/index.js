@@ -2,6 +2,16 @@ import axios from 'axios'
 
 /*==============BOOKS==============*/
 
+export function getBook(bookid){
+  const request = axios.get(`/api/getbookbyid?id=${bookid}`)
+                       .then(response => response.data)
+
+  return {
+    type: 'GET_BOOK',
+    payload: request
+  }
+}
+
 export function getBooks(limit = 10, start = 0, order = 'asc', list = ''){
   const request = axios.get(`/api/getbooks?limit=${limit}&skip=${start}&order=${order}`)
                        .then(response => {
@@ -14,6 +24,26 @@ export function getBooks(limit = 10, start = 0, order = 'asc', list = ''){
                             })
   return {
     type: 'GET_BOOKS',
+    payload: request
+  }
+}
+
+export function updateBook(data){
+  const request = axios.post(`/api/updatebook`, data)
+                       .then(response => response.data)
+
+  return {
+    type: 'UPDATE_BOOK',
+    payload: request
+  }
+}
+
+export function deleteBook(bookid){
+  const request = axios.delete(`/api/deletebook?id=${bookid}`)
+                       .then(response => response.data)
+
+  return {
+    type: 'DELETE_BOOK',
     payload: request
   }
 }
@@ -71,6 +101,24 @@ export function clearBookForm(){
   return {
     type: 'CLEAR_BOOK_FORM',
     payload: {}
+  }
+}
+
+//action for clearing the update book form once we update/delete an existing book
+export function clearBook(){
+  return {
+    type: 'CLEAR_BOOK',
+    payload: {
+      /*tricky situation: {} != null . If we set this to {} , the book component(./components/books.index.js)
+      fails to load and the app crashes
+      notice the ternary operator in that component - if we have a {} it falls in (?) and tries to return a 
+      component with undefined properties. OTOH by setting to null, it falls to (:) and proceeds with dispatching
+      an action to fetch book data
+      */
+      book: null,
+      updateBook: false,
+      deleteSuccess: false
+    }
   }
 }
 
