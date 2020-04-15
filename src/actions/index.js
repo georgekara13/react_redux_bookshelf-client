@@ -111,7 +111,7 @@ export function clearBook(){
     payload: {
       /*tricky situation: {} != null . If we set this to {} , the book component(./components/books.index.js)
       fails to load and the app crashes
-      notice the ternary operator in that component - if we have a {} it falls in (?) and tries to return a 
+      notice the ternary operator in that component - if we have a {} it falls in (?) and tries to return a
       component with undefined properties. OTOH by setting to null, it falls to (:) and proceeds with dispatching
       an action to fetch book data
       */
@@ -151,5 +151,37 @@ export function getUserPosts(ownerId){
   return {
     type: 'GET_USER_POSTS',
     payload: request
+  }
+}
+
+export function getUsers(){
+  const request = axios.get('/api/getusers')
+                       .then(response => response.data)
+
+  return {
+    type: 'GET_USERS',
+    payload: request
+  }
+}
+
+/*we also need to update the user list on user registration
+so instead of returning a payload after the request, we return a dispatch
+which contains the request promise, and update the userlist with the new user
+- redux thunk allows us to do so*/
+export function registerUser(user, userlist){
+  const request = axios.post('/api/register', user)
+
+  return (dispatch) => {
+    request.then(({data}) => {
+      let response = {
+        success: data.success,
+        users: [...userlist, data.user]
+      }
+
+      dispatch({
+        type: 'USER_REGISTER',
+        payload: response
+      })
+    })
   }
 }
