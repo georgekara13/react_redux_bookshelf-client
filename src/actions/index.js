@@ -173,9 +173,14 @@ export function registerUser(user, userlist){
 
   return (dispatch) => {
     request.then(({data}) => {
+
+      //either pass the new user with the previous user list if we get success from the server
+      //or pass the previous userlist if we dont get registration success - should have form validation as well
+      let users = data.success ? [...userlist, data.user]
+                               : userlist
       let response = {
         success: data.success,
-        users: [...userlist, data.user]
+        users
       }
 
       dispatch({

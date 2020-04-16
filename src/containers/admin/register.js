@@ -16,6 +16,23 @@ class Register extends Component {
     this.props.dispatch(getUsers())
   }
 
+  //used for clearing form fields/ show error state on user registration
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.user.register === false) {
+      this.setState({
+        error: 'Error, try again'
+      })
+    }
+    else {
+      this.setState({
+        name: '',
+        lastName: '',
+        email: '',
+        password: ''
+      })
+    }
+  }
+
   renderUserList = (userlist) => {
     return userlist ? userlist.map((user) => (
       <tr key={user._id}>
