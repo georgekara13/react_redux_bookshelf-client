@@ -11,6 +11,7 @@ import AddBook from './containers/admin/add'
 import UserPosts from './components/admin/userposts'
 import EditBook from './containers/admin/edit'
 import Register from './containers/admin/register'
+import Logout from './components/admin/logout'
 
 /*
 Use Auth() function to restrict routes whenever required
@@ -21,6 +22,7 @@ const Routes = () => (
     <Switch>
       <Route path="/" exact component={Home}/>
       <Route path="/login" exact component={Auth(Login, false)}/>
+      <Route path="/user/logout" exact component={Auth(Logout, true)}/>
       <Route path="/user" exact component={Auth(User, true)}/>
       <Route path="/books/:id" exact component={BookView}/>
       <Route path="/user/add" exact component={Auth(AddBook, true)}/>
