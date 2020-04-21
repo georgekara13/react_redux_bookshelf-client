@@ -1,5 +1,25 @@
 import axios from 'axios'
 
+//prefer to use reducers as variables, gathered in their files instead of hardcoded strings
+//easier to debug in case of typo
+import {
+  USER_LOGIN,
+  USER_AUTH,
+  GET_USER_POSTS,
+  GET_USERS,
+  USER_REGISTER
+} from '../reducers/types/usertype'
+
+import {  GET_BOOKS,
+  GET_BOOK,
+  GET_BOOK_W_REVIEWER,
+  CLEAR_BOOK_W_REVIEWER,
+  ADD_BOOK,
+  CLEAR_BOOK_FORM,
+  CLEAR_BOOK,
+  UPDATE_BOOK,
+  DELETE_BOOK } from '../reducers/types/booktype'
+
 /*==============BOOKS==============*/
 
 export function getBook(bookid){
@@ -7,7 +27,7 @@ export function getBook(bookid){
                        .then(response => response.data)
 
   return {
-    type: 'GET_BOOK',
+    type: GET_BOOK,
     payload: request
   }
 }
@@ -23,7 +43,7 @@ export function getBooks(limit = 10, start = 0, order = 'asc', list = ''){
                               }
                             })
   return {
-    type: 'GET_BOOKS',
+    type: GET_BOOKS,
     payload: request
   }
 }
@@ -33,7 +53,7 @@ export function updateBook(data){
                        .then(response => response.data)
 
   return {
-    type: 'UPDATE_BOOK',
+    type: UPDATE_BOOK,
     payload: request
   }
 }
@@ -43,7 +63,7 @@ export function deleteBook(bookid){
                        .then(response => response.data)
 
   return {
-    type: 'DELETE_BOOK',
+    type: DELETE_BOOK,
     payload: request
   }
 }
@@ -65,7 +85,7 @@ export function getBookWithReviewer(id){
              }
 
              dispatch({
-               type: 'GET_BOOK_W_REVIEWER',
+               type: GET_BOOK_W_REVIEWER,
                payload: response
              })
            })
@@ -78,7 +98,7 @@ we won't display the previous book info on the next component mounting,
 on slow internet connections - we prefer to show empty views, rather that incorrect data*/
 export function clearBookWithReviewer(){
   return {
-    type: 'CLEAR_BOOK_W_REVIEWER',
+    type: CLEAR_BOOK_W_REVIEWER,
     payload: {
       book: {},
       reviewer: {}
@@ -91,7 +111,7 @@ export function addBook(book){
                        .then(response => response.data)
 
   return {
-    type: 'ADD_BOOK',
+    type: ADD_BOOK,
     payload: request
   }
 }
@@ -99,7 +119,7 @@ export function addBook(book){
 //action for clearing the book form once we add a new book
 export function clearBookForm(){
   return {
-    type: 'CLEAR_BOOK_FORM',
+    type: CLEAR_BOOK_FORM,
     payload: {}
   }
 }
@@ -107,7 +127,7 @@ export function clearBookForm(){
 //action for clearing the update book form once we update/delete an existing book
 export function clearBook(){
   return {
-    type: 'CLEAR_BOOK',
+    type: CLEAR_BOOK,
     payload: {
       /*tricky situation: {} != null . If we set this to {} , the book component(./components/books.index.js)
       fails to load and the app crashes
@@ -129,7 +149,7 @@ export function loginUser({email, password}){
                        .then(response => response.data)
 
   return {
-    type: 'USER_LOGIN',
+    type: USER_LOGIN,
     payload: request
   }
 }
@@ -139,7 +159,7 @@ export function auth(){
                        .then(response => response.data)
 
   return {
-    type: 'USER_AUTH',
+    type: USER_AUTH,
     payload: request
   }
 }
@@ -149,7 +169,7 @@ export function getUserPosts(ownerId){
                        .then(response => response.data)
 
   return {
-    type: 'GET_USER_POSTS',
+    type: GET_USER_POSTS,
     payload: request
   }
 }
@@ -159,7 +179,7 @@ export function getUsers(){
                        .then(response => response.data)
 
   return {
-    type: 'GET_USERS',
+    type: GET_USERS,
     payload: request
   }
 }
@@ -184,7 +204,7 @@ export function registerUser(user, userlist){
       }
 
       dispatch({
-        type: 'USER_REGISTER',
+        type: USER_REGISTER,
         payload: response
       })
     })
